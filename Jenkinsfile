@@ -10,7 +10,12 @@ pipeline{
         dockerImagemongo = 'mongo'
 //         scannerHome = tool name: 'sonarqube-scanner'
     }
-    agent any
+    agent {
+        docker {
+            image 'pdmlab/jenkins-node-docker-agent:6.11.1'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages{
         
         stage('Cloning Git') {
