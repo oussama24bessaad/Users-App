@@ -33,7 +33,7 @@ services:
     volumes:
       - ./FrontendApp/src:/app/src
     depends_on:
-      - backendapp
+      - backend
     stdin_open: true
     tty: true
     container_name: frontendapp
