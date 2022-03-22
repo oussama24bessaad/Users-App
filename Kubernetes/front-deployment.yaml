@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops
+      tier: frontend
+      track: stable
+
+  template:
+    metadata:
+      name: frontend
+      labels:
+        app: devops
+        tier: frontend
+        track: stable
+    spec:
+      containers:
+        - name: devops
+          image: oussama24/frontendapp:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: frontend-port
+              containerPort: 3000 
+          resources: {""}
+          env:
+            - name: USER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: username
+            - name: USR_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: password
+            - name: MONGO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: mongo-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  labels:
+    app: frontend-service
+    
+spec:
+    type: NodePort
+    ports:
+      - protocol: TCP
+        port: 3000
+        targetPort: 3000
+        nodePort: 30200
+    selector:
+      app: devops
+      tier: frontend
