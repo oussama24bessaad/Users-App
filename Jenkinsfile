@@ -1,7 +1,7 @@
 pipeline{
     environment {
         COMPOSE_FILE = "docker-compose.yaml"
-        PATH = "$PATH:/usr/bin/docker-compose"
+        PATH = "$PATH:/usr/bin"
         registryCredential = "dockerhub_credentials"
         imagenameback = "oussama24/backendapp:latest"
         dockerImageback = 'backendapp'
