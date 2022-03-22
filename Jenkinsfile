@@ -56,9 +56,12 @@ pipeline{
                 sh 'docker --version'
                 sh "docker-compose build"
                 sh "docker-compose up -d"
-                sh "docker push users-app_backend:latest oussama24/users-app_backend:latest"
-                sh "docker push users-app_frontend:latest oussama24/users-app_frontend:latest"
-                sh "docker push mongo:latest oussama24/mongo:latest"
+                sh "docker tag users-app_backend:latest oussama24/users-app_backend:latest"
+                sh "docker tag users-app_frontend:latest oussama24/users-app_frontend:latest"
+                sh "docker tag mongo:latest oussama24/mongo:latest"
+                sh "docker push oussama24/users-app_backend:latest"
+                sh "docker push oussama24/users-app_frontend:latest"
+                sh "docker push oussama24/mongo:latest"
             }
         }
 
