@@ -56,6 +56,9 @@ pipeline{
                 sh 'docker --version'
                 sh "docker-compose build"
                 sh "docker-compose up -d"
+                sh "docker push users-app_backend:latest oussama24/users-app_backend:latest"
+                sh "docker push users-app_frontend:latest oussama24/users-app_frontend:latest"
+                sh "docker push mongo:latest oussama24/mongo:latest"
             }
         }
 
@@ -67,38 +70,38 @@ pipeline{
         //     }
         // }
       
-        stage("docker-push"){
-            steps{  
+        // stage("docker-push"){
+        //     steps{  
                     
-                    script {
-                    // dockerImageback = docker.build imagenameback   
-                    docker.withRegistry( '', registryCredential ) {
-                    dockerImageback.push
-                    // ("$BUILD_NUMBER")
-                    dockerImageback.push
-                    // ('latest')
-                    }
-                    }
-                    script {
-                    // dockerImagefront = docker.build imagenamefront   
-                    docker.withRegistry( '', registryCredential ) {
-                    dockerImagefront.push
-                    // ("$BUILD_NUMBER")
-                    dockerImagefront.push
-                    // ('latest')
-                    }
-                }
-                    script {
-                    // dockerImagemongo = docker.build imagenamemongo  
-                    docker.withRegistry( '', registryCredential ) {
-                    dockerImagemongo.push
-                    // ("$BUILD_NUMBER")
-                    dockerImagemongo.push
-                    // ('latest')
-                    }
-                }
-            }
-        }
+        //             script {
+        //             // dockerImageback = docker.build imagenameback   
+        //             docker.withRegistry( '', registryCredential ) {
+        //             dockerImageback.push
+        //             // ("$BUILD_NUMBER")
+        //             dockerImageback.push
+        //             // ('latest')
+        //             }
+        //             }
+        //             script {
+        //             // dockerImagefront = docker.build imagenamefront   
+        //             docker.withRegistry( '', registryCredential ) {
+        //             dockerImagefront.push
+        //             // ("$BUILD_NUMBER")
+        //             dockerImagefront.push
+        //             // ('latest')
+        //             }
+        //         }
+        //             script {
+        //             // dockerImagemongo = docker.build imagenamemongo  
+        //             docker.withRegistry( '', registryCredential ) {
+        //             dockerImagemongo.push
+        //             // ("$BUILD_NUMBER")
+        //             dockerImagemongo.push
+        //             // ('latest')
+        //             }
+        //         }
+        //     }
+        // }
         stage('Deploy App') {
     steps {
         withCredentials([
