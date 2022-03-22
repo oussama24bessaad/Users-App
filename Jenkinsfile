@@ -12,12 +12,12 @@ pipeline{
     }
     agent any
     stages{
-         stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/oussama24bessaad/Users-App'
-      }
-    }
+        
+        stage('Cloning Git') {
+            steps {
+                git 'https://github.com/oussama24bessaad/Users-App'
+            }
+        }
 
           
 //         stage("test-sonar"){
