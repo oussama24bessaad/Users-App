@@ -7,7 +7,7 @@ services:
 
     # env_file:
     #   - ./.env
-    container_name: appdb
+    container_name: mongodb
   backend:
     build: 
      context: ./BackendApp
