@@ -1,5 +1,6 @@
 pipeline{
     environment {
+        COMPOSE_FILE = "docker-compose.yaml"
         registryCredential = "dockerhub_credentials"
         imagenameback = "oussama24/backendapp:latest"
         dockerImageback = 'backendapp'
@@ -11,6 +12,12 @@ pipeline{
     }
     agent any
     stages{
+         stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/oussama24bessaad/Users-App'
+      }
+    }
 
           
 //         stage("test-sonar"){
@@ -41,14 +48,22 @@ pipeline{
                }         
            }
        }
-        
-        stage("build"){
-            
-            steps{
+        stage("Build and start images") {
+            steps {
                 sh 'npm install'
                 sh 'docker --version'
+                sh "docker-composer build"
+                sh "docker-compose up -d"
             }
         }
+
+        // stage("build"){
+            
+        //     steps{
+        //         sh 'npm install'
+        //         sh 'docker --version'
+        //     }
+        // }
       
         stage("docker-build"){
             steps{  
