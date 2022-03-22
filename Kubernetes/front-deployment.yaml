@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: devops
-          image: oussama24/frontendapp:latest
+          image: oussama24/users-app_frontend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: frontend-port
