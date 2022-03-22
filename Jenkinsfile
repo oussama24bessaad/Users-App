@@ -51,6 +51,8 @@ pipeline{
        }
         stage("Build and start images") {
             steps {
+                script {
+                   docker.withRegistry( '', registryCredential ) {
                 sh 'cd FrontendApp && npm install'
                 sh 'cd BackendApp && npm install'
                 sh 'docker --version'
@@ -62,6 +64,8 @@ pipeline{
                 sh "docker push oussama24/users-app_backend:latest"
                 sh "docker push oussama24/users-app_frontend:latest"
                 sh "docker push oussama24/mongo:latest"
+                   }
+                }
             }
         }
 
