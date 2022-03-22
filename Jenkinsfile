@@ -1,7 +1,7 @@
 pipeline{
     environment {
-        COMPOSE_FILE = "docker-compose.yaml"
-        PATH = "$PATH:/usr/local/bin"
+        // COMPOSE_FILE = "docker-compose.yaml"
+        // PATH = "$PATH:/usr/local/bin"
         registryCredential = "dockerhub_credentials"
         imagenameback = "oussama24/backendapp:latest"
         dockerImageback = 'backendapp'
@@ -54,8 +54,8 @@ pipeline{
                 sh 'cd FrontendApp && npm install'
                 sh 'cd BackendApp && npm install'
                 sh 'docker --version'
-                sh "docker-composer build"
-                sh "docker-compose up -d"
+                // sh "docker-composer build"
+                // sh "docker-compose up -d"
             }
         }
 
