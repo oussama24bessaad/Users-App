@@ -5,8 +5,8 @@ services:
     volumes:
       - data:/data/db
 
-    env_file:
-      - ./.env
+    # env_file:
+    #   - ./.env
     container_name: appdb
   backend:
     build: 
