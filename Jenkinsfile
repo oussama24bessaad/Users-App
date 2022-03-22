@@ -73,21 +73,21 @@ pipeline{
                     script {
                     // dockerImageback = docker.build imagenameback   
                     docker.withRegistry( '', registryCredential ) {
-                    dockerImageback.push("$BUILD_NUMBER")
+                    // dockerImageback.push("$BUILD_NUMBER")
                     dockerImageback.push('latest')
                     }
                     }
                     script {
                     // dockerImagefront = docker.build imagenamefront   
                     docker.withRegistry( '', registryCredential ) {
-                    dockerImagefront.push("$BUILD_NUMBER")
+                    // dockerImagefront.push("$BUILD_NUMBER")
                     dockerImagefront.push('latest')
                     }
                 }
                     script {
                     // dockerImagemongo = docker.build imagenamemongo  
                     docker.withRegistry( '', registryCredential ) {
-                    dockerImagemongo.push("$BUILD_NUMBER")
+                    // dockerImagemongo.push("$BUILD_NUMBER")
                     dockerImagemongo.push('latest')
                     }
                 }
