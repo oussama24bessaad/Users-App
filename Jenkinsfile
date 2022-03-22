@@ -54,8 +54,8 @@ pipeline{
                 sh 'cd FrontendApp && npm install'
                 sh 'cd BackendApp && npm install'
                 sh 'docker --version'
-                // sh "docker-composer build"
-                // sh "docker-compose up -d"
+                sh "docker-compose build"
+                sh "docker-compose up -d"
             }
         }
 
