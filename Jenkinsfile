@@ -50,7 +50,8 @@ pipeline{
        }
         stage("Build and start images") {
             steps {
-                sh 'npm install'
+                sh 'cd FrontendApp && npm install'
+                sh 'cd BackendApp && npm install'
                 sh 'docker --version'
                 sh "docker-composer build"
                 sh "docker-compose up -d"
