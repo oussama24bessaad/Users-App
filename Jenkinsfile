@@ -1,6 +1,6 @@
 pipeline{
     environment {
-        COMPOSE_FILE = "docker-compose.yaml"
+        // COMPOSE_FILE = "docker-compose.yaml"
         registryCredential = "dockerhub_credentials"
         imagenameback = "oussama24/backendapp:latest"
         dockerImageback = 'backendapp'
