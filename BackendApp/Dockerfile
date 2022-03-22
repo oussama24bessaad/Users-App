@@ -5,8 +5,8 @@ WORKDIR /server
 COPY package.json ./
 
 RUN npm  cache clear --force
-RUN npm install source-map-resolve
-
+RUN npm install
+RUN npm audit fix --force
 COPY . .
 
 EXPOSE 5000

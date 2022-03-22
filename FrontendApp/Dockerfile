@@ -7,6 +7,8 @@ COPY package.json ./
 RUN npm  cache clear --force
 # RUN npm config set registry "http://registry.npmjs.org" --global
 RUN npm install
+RUN npm audit fix --force
+
 
 COPY . .
 
