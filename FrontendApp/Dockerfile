@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package.json ./
 
 RUN npm  cache clear --force
-RUN npm install
+RUN npm install source-map-resolve
 
 COPY . .
 
