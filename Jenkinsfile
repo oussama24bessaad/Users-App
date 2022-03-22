@@ -3,9 +3,9 @@ pipeline{
         COMPOSE_FILE = "docker-compose.yaml"
         PATH = "$PATH:/usr/local/bin"
         registryCredential = "dockerhub_credentials"
-        imagenameback = "oussama24/backendapp:latest"
+        imagenameback = "oussama24/users-app_backend:latest"
         dockerImageback = 'backendapp'
-        imagenamefront = "oussama24/frontendapp:latest"
+        imagenamefront = "oussama24/users-app_frontend:latest"
         dockerImagefront = 'frontendapp'
         imagenamemongo = "oussama24/mongo:latest"
         dockerImagemongo = 'mongo'
