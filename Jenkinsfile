@@ -3,11 +3,11 @@ pipeline{
         COMPOSE_FILE = "docker-compose.yaml"
         PATH = "$PATH:/usr/local/bin"
         registryCredential = "dockerhub_credentials"
-        imagenameback = "oussama24/users-app_backend:latest"
+        imagenameback = "oussama24/users-app_backend"
         dockerImageback = 'backendapp'
-        imagenamefront = "oussama24/users-app_frontend:latest"
+        imagenamefront = "oussama24/users-app_frontend"
         dockerImagefront = 'frontendapp'
-        imagenamemongo = "oussama24/mongo:latest"
+        imagenamemongo = "oussama24/mongo"
         dockerImagemongo = 'mongo'
 //         scannerHome = tool name: 'sonarqube-scanner'
     }
@@ -67,7 +67,7 @@ pipeline{
         //     }
         // }
       
-        stage("docker-build"){
+        stage("docker-push"){
             steps{  
                     
                     script {
